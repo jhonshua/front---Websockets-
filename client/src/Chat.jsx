@@ -20,7 +20,7 @@ export default function Chat() {
 }, [selectedUserId])
 
 function connectToWs() {
-  const ws = new WebSocket('ws://api---websockets-0eho-dev.fl0.io')
+  const ws = new WebSocket('ws://api---websockets-0eho-dev.fl0.io/')
   setWs(ws)
   ws.addEventListener('message', handleMessage)
   ws.addEventListener('close', () => {
