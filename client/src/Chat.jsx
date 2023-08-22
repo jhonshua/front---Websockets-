@@ -20,14 +20,14 @@ export default function Chat() {
 }, [selectedUserId])
 
 function connectToWs() {
-  const ws = new WebSocket('ws:https://api---websockets-0eho-dev.fl0.io/')
+  const ws = new WebSocket('ws:https://api---websockets-0eho-dev.fl0.io')
   setWs(ws)
   ws.addEventListener('message', handleMessage)
   ws.addEventListener('close', () => {
     setTimeout(() => {
       console.log('Disconnected. Trying to reconnect.')
       connectToWs()
-    }, 1000)
+    }, 3000)
   })
 }
   function showOnlinePeople(peopleArray) {
