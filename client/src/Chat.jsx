@@ -27,7 +27,7 @@ function connectToWs() {
     setTimeout(() => {
       console.log('Disconnected. Trying to reconnect.')
       connectToWs()
-    }, 3000)
+    }, 1000)
   })
 }
   function showOnlinePeople(peopleArray) {
