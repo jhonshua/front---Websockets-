@@ -16,19 +16,20 @@ export default function Chat() {
   const { username, id, setId, setUsername } = useContext(UserContext)
   const divUnderMessages = useRef()
   useEffect(() => {
-    connectToWs()
-  }, [selectedUserId])
-  function connectToWs() {
-    const ws = new WebSocket('ws:localhost:4040/')
-    setWs(ws)
-    ws.addEventListener('message', handleMessage)
-    ws.addEventListener('close', () => {
-      setTimeout(() => {
-        console.log('Disconnected. Trying to reconnect.')
-        connectToWs()
-      }, 1000)
-    })
-  }
+  connectToWs()
+}, [selectedUserId])
+
+function connectToWs() {
+  const ws = new WebSocket('ws:https://api---websockets-0eho-dev.fl0.io/')
+  setWs(ws)
+  ws.addEventListener('message', handleMessage)
+  ws.addEventListener('close', () => {
+    setTimeout(() => {
+      console.log('Disconnected. Trying to reconnect.')
+      connectToWs()
+    }, 1000)
+  })
+}
   function showOnlinePeople(peopleArray) {
     const people = {}
     peopleArray.forEach(({ userId, username }) => {
